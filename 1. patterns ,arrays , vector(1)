@@ -595,4 +595,268 @@ int main(){
     }
     return 0;
 }
+-------------------------2D arrays --------------------------
+#include<iostream>
+#include<vector>
+using namespace std;
+int main(){
+  //2d Array 
+  int arr[56][27] ;
 
+  //tum grid ko visulaise kar skte ho apne aap se tic toc toe game ki tarah  
+  //lekin memory ke andar wo 1d array ke hi tarah print hogi . so linearly store hota he memory me to  -->row 0 row 1 row 2 ...elements 
+
+  //aapko apne dimmag me khud se use picture ke roop me dekhna pdega
+
+  //formula --> c*i+2 ki kis index pe match krna he 
+
+  int brr[3][3] = {
+  {1,2,3},
+  {4,5,6},
+  {7,8,9}} ; 
+
+
+
+  return 0;
+}
+
+
+
+----------------------------------2d array cinput representation-------------
+#include<iostream>
+using namespace std;
+int main(){
+    int arr[3][3]; // 2D array with 3 rows and 3 columns (Matrix -> Total of 9 elements can be stored)
+    // Initialization
+    int brr[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+    // Output in 2D array
+    cout<<brr[2][2]<<endl; // Output will be 9
+    cout<<brr[1][1]<<endl; // Output will be 5
+    cout<<brr[0][2]<<endl; // Output will be 3
+    // Row-wise access
+    for(int i = 0;i<3;i++){
+        for(int j = 0;j<3;j++){
+            cout<<brr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    // Column-wise access
+    for(int i = 0;i<3;i++){
+        for(int j = 0;j<3;j++){
+            cout<<brr[j][i]<<" ";
+        }
+        cout<<endl;
+    }
+    // input
+    int crr[3][3];
+    // row - wise input
+    for(int i = 0;i<3;i++){
+        for(int j = 0;j<3;j++){
+            cin>>crr[i][j];
+        }
+    }
+    // print row wise
+    for(int i = 0;i<3;i++){
+        for(int j = 0;j<3;j++){
+            cout<<crr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    // column wise input
+    for(int i = 0;i<3;i++){
+        for(int j = 0;j<3;j++){
+            cin>>crr[j][i];
+        }
+    }
+    // print row wise
+    for(int i = 0;i<3;i++){
+        for(int j = 0;j<3;j++){
+            cout<<crr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+
+
+
+
+-------------------------------------------2d arrays question ---------------------------
+
+row sum --> 
+
+
+#include<iostream>
+using namespace std;
+void rowWisePrint(int arr[][3],int rows,int cols){
+    for(int i = 0;i<rows;i++){
+        int sum = 0;
+        for(int j = 0;j<cols;j++){
+            sum = sum + arr[i][j];
+        }
+        cout<<"Printing sum of row "<<i<<" "<<sum<<endl;
+    }
+}
+int main(){
+    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}}; 
+    int rows = 3;
+    int columns = 3;
+    rowWisePrint(arr,rows,columns);
+    return 0;
+}
+
+
+
+
+-------------------------------------column sum ------------------------
+#include<iostream>
+using namespace std;
+void rowWisePrint(int arr[][3],int rows,int cols){
+    for(int i = 0;i<rows;i++){
+        int sum = 0;
+        for(int j = 0;j<cols;j++){ 
+            sum = sum + arr[j][i];  // 0,0  1,0  2,0 
+        }
+        cout<<"Printing sum of row "<<i<<" "<<sum<<endl;
+    }
+}
+int main(){
+    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}}; 
+    int rows = 3;
+    int columns = 3;
+    rowWisePrint(arr,rows,columns);
+    return 0;
+}
+
+
+
+------------------------------Linear search in 2d arrays ----------------------------
+#include<iostream>
+using namespace std;
+bool findKey(int arr[][3],int rows,int cols,int key){
+    for(int i = 0;i<rows;i++){
+        for(int j = 0;j<cols;j++){
+            // Comparing the key to be searched with the element
+            if(arr[i][j] == key){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+int main(){
+    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}}; 
+    int rows = 3;
+    int columns = 3;
+    int key = 10;
+    if(findKey(arr,rows,columns,key)){
+        cout<<"Found Element ";
+    }
+    else{
+        cout<<"Absent ";
+    }
+    
+    return 0;
+}
+
+
+
+
+
+-----------------------------------maximum and minimum key found in 2d arrays -----------------------
+#include<iostream>
+#include<limits.h>
+using namespace std;
+int maximum(int arr[][3],int rows,int cols){
+    int maxi = INT_MIN;
+    for(int i = 0;i<rows;i++){
+        for(int j = 0;j<cols;j++){
+            if(arr[i][j]>maxi){
+                maxi = arr[i][j];
+            }
+        }
+    }
+    return maxi;
+}
+int minimum(int arr[][3],int rows,int cols){
+    int mini = INT_MAX;
+    for(int i = 0;i<rows;i++){
+        for(int j = 0;j<cols;j++){
+            if(arr[i][j]<mini){
+                mini = arr[i][j];
+            }
+        }
+    }
+    return mini;
+}
+int main(){
+    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}}; 
+    int rows = 3;
+    int columns = 3;
+    cout<<"Maxi = "<<maximum(arr,rows,columns)<<" and  Mini = "<<minimum(arr,rows,columns)<<endl;
+    
+    return 0;
+}
+
+
+
+--------------------------------transpose ---------------------------
+#include<iostream>
+using namespace std;
+void transpose(int arr[][3],int rows,int cols){
+    for(int i = 0;i<rows;i++){
+        for(int j = 0;j<i;j++){
+            swap(arr[i][j],arr[j][i]);
+        }
+    }
+}
+int main(){
+    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}}; 
+    int rows = 3;
+    int columns = 3;
+    cout<<"Printing array first "<<endl;
+    for(int i = 0;i<rows;i++){
+        for(int j = 0;j<columns;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"Taking transpose "<<endl;
+    transpose(arr,rows,columns);
+    cout<<"Printing transposed array "<<endl;
+    for(int i = 0;i<rows;i++){
+        for(int j = 0;j<columns;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+------------------------------------vector of vector ---------------------------
+#include<iostream>
+#include<vector>
+using namespace std;
+int main(){
+    vector<vector<int>>arr;
+    vector<int>a{1,2,3};
+    vector<int>b{2,4,6};
+    vector<int>c{1,3,7};
+    arr.push_back(a);
+    arr.push_back(b);
+    arr.push_back(c);
+    for(int i = 0;i<arr.size();i++){
+        for(int j = 0;i<arr[0].size();j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl; 
+    }
+    return 0;
+}
